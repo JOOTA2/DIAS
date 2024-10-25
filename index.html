@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesouros da shopee</title>
     <style>
-       body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -46,10 +46,10 @@
             transform: scale(1.02);
         }
         .product-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 10px;
+             max-width: 100%; /* Limita a imagem principal ao tamanho do contêiner */
+             height: auto;
+             border-radius: 8px;
+             margin-bottom: 10px;
         }
         .product-card h2 {
             font-size: 1.5em;
@@ -91,7 +91,6 @@
         .hidden {
             display: none;
         }
-        /* Estilização da barra de pesquisa */
         .search-bar {
             margin: 20px 0;
             text-align: center;
@@ -102,6 +101,18 @@
             font-size: 1.2em;
             border-radius: 5px;
             border: 1px solid #ccc;
+        }
+        /* Estilos para telas menores que 768px (tablets e celulares) */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+            .product-card {
+                width: 100%;
+            }
+            .search-bar input {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -131,19 +142,17 @@
         </div>
     </div>
 
-    <!-- Adicione outros produtos com a mesma estrutura -->
+    <!-- Outro produto -->
     <div class="product-card" data-name="Maquina de Cortar cabelo">
         <img id="mainImage2" src="https://down-br.img.susercontent.com/file/br-11134201-22120-0v8c1cn5lflvf3.webp" alt="Produto 2">
         <h2><a href="https://s.shopee.com.br/1Vh5QI149u" target="_blank">Máquina De Cortar Cabelo Para Barba Masculina Designer Aleatório Elétrico Profissional</a></h2>
         <p><strong>R$ 18,98 </strong></p>
-
-          <!-- Imagens pequenas (thumbnails) para selecionar -->
-          <div class="thumbnail-images">
+        
+        <div class="thumbnail-images">
             <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljpxzjvdqqoza2.webp" alt="Thumb 1" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljpxzjvdqqoza2.webp')">
             <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-arkmczehkqjv47.webp" alt="Thumb 2" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/sg-11134201-22110-arkmczehkqjv47.webp')">
             <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljpxzjvdqqee98.webp" alt="Thumb 3" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljpxzjvdqqee98.webp')">
-            <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-u3m43jahkqjvfd.webp" alt="Thumb 3" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/sg-11134201-22110-u3m43jahkqjvfd.webp')">
-            <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-5otd48ghkqjv18.webp" alt="Thumb 3" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/sg-11134201-22110-5otd48ghkqjv18.webp')">
+            <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-u3m43jahkqjvfd.webp" alt="Thumb 4" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/sg-11134201-22110-u3m43jahkqjvfd.webp')">
         </div>
     </div>
 
@@ -754,28 +763,19 @@
 </footer>
 
 <script>
-    // Função para trocar a imagem principal do produto
     function changeImage(mainImgId, newSrc) {
         document.getElementById(mainImgId).src = newSrc;
     }
 
-    // Função para fazer a busca dos produtos
     function searchProduct() {
-        // Captura o valor da pesquisa
         var input = document.getElementById('searchInput').value.toLowerCase();
-        // Seleciona todos os produtos
         var products = document.querySelectorAll('.product-card');
-
-        // Itera sobre os produtos
         products.forEach(function(product) {
-            // Captura o nome do produto a partir do atributo data-name
             var productName = product.getAttribute('data-name').toLowerCase();
-
-            // Verifica se o nome do produto inclui o termo de busca
             if (productName.includes(input)) {
-                product.classList.remove('hidden'); // Mostra o produto
+                product.classList.remove('hidden');
             } else {
-                product.classList.add('hidden'); // Esconde o produto
+                product.classList.add('hidden');
             }
         });
     }
