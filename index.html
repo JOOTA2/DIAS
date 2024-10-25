@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesouros da shopee</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4c0101;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        a {
+            color: black;
+            text-decoration: none; 
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            text-align: center;
+            width: calc(30% - 20px);
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.02);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .product-card h2 {
+            font-size: 1.5em;
+            margin: 8px 0;
+        }
+        .product-card p {
+            font-size: 1.5em;
+            margin: 15px 0;
+            color: red;
+        }
+        footer {
+            background-color: #4c0101;
+            color: #fff;
+            text-align: center;
+            padding: 3px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .thumbnail-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 100%;
+            margin-top: 10px;
+            gap: 5px;
+        }
+        .thumbnail-images img {
+            max-width: 50px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+        .thumbnail-images img:hover {
+            border-color: #333;
+        }
+        .hidden {
+            display: none;
+        }
+        /* Estilização da barra de pesquisa */
+        .search-bar {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tesouros da shopee</h1>
+    <p>Explore nossos produtos e encontre os melhores preços!</p>
+</header>
+
+<!-- Barra de Pesquisa -->
+<div class="search-bar">
+    <input type="text" id="searchInput" onkeyup="searchProduct()" placeholder="Buscar produtos...">
+</div>
+
+<div class="container" id="productContainer">
+    <!-- Exemplo de um produto -->
+    <div class="product-card" data-name="Aspirador De Pó Usb Portátil Completo">
+        <img id="mainImage1" src="https://down-br.img.susercontent.com/file/sg-11134201-7rccm-lr7ety13o0rw47.webp" alt="Produto 1">
+        <h2><a href="https://s.shopee.com.br/5AaNn1vuHg" target="_blank">Aspirador De Pó Usb Portátil Completo Linha Premium Carro E Casa 2000mAh</a></h2>
+        <p><strong>R$ 27,98</strong></p>
+
+        <div class="thumbnail-images">
+            <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rccg-lr7etu0jjkgb21.webp" alt="Thumb 1" onclick="changeImage('mainImage1','https://down-br.img.susercontent.com/file/sg-11134201-7rccg-lr7etu0jjkgb21.webp')">
+            <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rcf8-lr7eu07mh43s1e.webp" alt="Thumb 2" onclick="changeImage('mainImage1','https://down-br.img.susercontent.com/file/sg-11134201-7rcf8-lr7eu07mh43s1e.webp')">
+            <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rcco-lr7eu4k4449dd6.webp" alt="Thumb 3" onclick="changeImage('mainImage1','https://down-br.img.susercontent.com/file/sg-11134201-7rcco-lr7eu4k4449dd6.webp')">
+        </div>
+    </div>
+
+    <!-- Adicione outros produtos com a mesma estrutura -->
+    <div class="product-card" data-name="Maquina de Cortar cabelo">
+        <img id="mainImage2" src="https://down-br.img.susercontent.com/file/br-11134201-22120-0v8c1cn5lflvf3.webp" alt="Produto 2">
+        <h2><a href="https://s.shopee.com.br/1Vh5QI149u" target="_blank">Máquina De Cortar Cabelo Para Barba Masculina Designer Aleatório Elétrico Profissional</a></h2>
+        <p><strong>R$ 18,98 </strong></p>
+
+          <!-- Imagens pequenas (thumbnails) para selecionar -->
+          <div class="thumbnail-images">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljpxzjvdqqoza2.webp" alt="Thumb 1" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljpxzjvdqqoza2.webp')">
+            <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-arkmczehkqjv47.webp" alt="Thumb 2" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/sg-11134201-22110-arkmczehkqjv47.webp')">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljpxzjvdqqee98.webp" alt="Thumb 3" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljpxzjvdqqee98.webp')">
+            <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-u3m43jahkqjvfd.webp" alt="Thumb 3" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/sg-11134201-22110-u3m43jahkqjvfd.webp')">
+            <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-5otd48ghkqjv18.webp" alt="Thumb 3" onclick="changeImage('mainImage2','https://down-br.img.susercontent.com/file/sg-11134201-22110-5otd48ghkqjv18.webp')">
+        </div>
+    </div>
+
+    <div class="product-card" data-name="Caixinha de som">
+        <img id="mainImage3" src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lkck6ygetyljf5.webp" alt="Produto 2">
+        <h2><a href="https://s.shopee.com.br/9A6WYNP52H" target="_blank">Caixinha De Som G-speaker smart Carregador Indução Altofalante Bluetooth Android e IOS Luminaria</a></h2>
+        <p><strong>R$ 58,00 </strong></p>
+
+          <!-- Imagens pequenas (thumbnails) para selecionar -->
+          <div class="thumbnail-images">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lkck6ygetyvdfc.webp" alt="Thumb 1" onclick="changeImage('mainImage3','https://down-br.img.susercontent.com/file/br-11134207-7qukw-lkck6ygetyvdfc.webp')">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lkck6yiwqb1ja5.webp" alt="Thumb 2" onclick="changeImage('mainImage3','https://down-br.img.susercontent.com/file/br-11134207-7qukw-lkck6yiwqb1ja5.webp')">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lkck6ykaoa89fe.webp" alt="Thumb 3" onclick="changeImage('mainImage3','https://down-br.img.susercontent.com/file/br-11134207-7qukw-lkck6ykaoa89fe.webp')">
+        </div>
+    </div>
+
+    <div class="product-card" data-name="Original APple Watch">
+        <img id="mainImage4" src="https://down-br.img.susercontent.com/file/cn-11134207-7qukw-lez7fvy5665ma8.webp" alt="Produto 2">
+        <h2><a href="https://s.shopee.com.br/5fWeNwGPDs" target="_blank"> Original Apple Watch Ultra Série 8 SmartWatch Relógios Inteligentes Masculinos E
+            Femininos Chamada Bluetooth ip68 À Prova D'água Carregamento Sem Fio Personalizado</a></h2>
+        <p><strong>R$ 155,00 </strong></p>
+
+            <!-- Imagens pequenas (thumbnails) para selecionar -->
+            <div class="thumbnail-images">
+                <img src="https://down-br.img.susercontent.com/file/cn-11134207-7qukw-lezjgnicdbxm5f.webp" alt="Thumb 1" onclick="changeImage('mainImage4','https://down-br.img.susercontent.com/file/cn-11134207-7qukw-lezjgnicdbxm5f.webp')">
+                <img src="https://down-br.img.susercontent.com/file/cn-11134207-7r98o-lmsn5etn6syqa9.webp" alt="Thumb 2" onclick="changeImage('mainImage4','https://down-br.img.susercontent.com/file/cn-11134207-7r98o-lmsn5etn6syqa9.webp')">
+                <img src="https://down-br.img.susercontent.com/file/cn-11134207-7qukw-lez7fvyowx7t70.webp" alt="Thumb 3" onclick="changeImage('mainImage4','https://down-br.img.susercontent.com/file/cn-11134207-7qukw-lez7fvyowx7t70.webp')">
+            </div>
+    </div>
+    <div class="product-card" data-name="Kit Completo Cozinha Potes de Alimentos">
+        <img id="mainImage5" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu0ressazvro12.webp" alt="Produto 2">
+        <h2><a href="https://s.shopee.com.br/1g0Vcba6uf" target="_blank"> Kit Completo Cozinha Potes de Alimentos, Frascos de armazenamento de Acrílico. BC-77/78/79 </a></h2>
+        <p><strong>R$ 16,99 </strong></p>
+
+          <!-- Imagens pequenas (thumbnails) para selecionar -->
+          <div class="thumbnail-images">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu0ressayh5x84.webp" alt="Thumb 1" onclick="changeImage('mainImage5','https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu0ressayh5x84.webp')">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu0ressbdxls70.webp" alt="Thumb 2" onclick="changeImage('mainImage5','https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu0ressbdxls70.webp')">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu0ressazvqd3a.webp" alt="Thumb 3" onclick="changeImage('mainImage5','https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu0ressazvqd3a.webp')">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu0ressaj0ycfb.webp" alt="Thumb 3" onclick="changeImage('mainImage5','https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu0ressaj0ycfb.webp')">
+        </div>
+    </div>
+
+    <div class="product-card" data-name="Mini Umidificador Difusor Aromatizador">
+        <img id="mainImage6" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0iecyqtcn7lb0.webp" alt="Produto 2">
+        <h2><a href="https://s.shopee.com.br/9UjMwzt5fi" target="_blank"> Mini Umidificador Difusor Aromatizador Egg Portátil Usb Led Aromatizador De Ambiente 
+            Purificador De Ar Casa Escritório Escola</a></h2>
+        <p><strong>R$ 15,99 </strong></p>
+
+          <!-- Imagens pequenas (thumbnails) para selecionar -->
+          <div class="thumbnail-images">
+            <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0iecyqtfgch34.webp" alt="Thumb 1" onclick="changeImage('mainImage6','https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0iecyqtfgch34.webp')">
+            <img src="https://down-br.img.susercontent.com/file/sg-11134201-22090-gpgwqti9ryhv8b.webp" alt="Thumb 2" onclick="changeImage('mainImage6','https://down-br.img.susercontent.com/file/sg-11134201-22090-gpgwqti9ryhv8b.webp')">
+            <img src="https://down-br.img.susercontent.com/file/1b4ef17347ed1b22af1426a6f5c09ca1.webp" alt="Thumb 3" onclick="changeImage('mainImage6','https://down-br.img.susercontent.com/file/1b4ef17347ed1b22af1426a6f5c09ca1.webp')">
+        </div>
+    </div>
+    <!-- Mais produtos podem ser adicionados assim -->
+
+
+    <div class="product-card" data-name="Projetor Portátil Android 11 Smart">
+    <img id="mainImage7" src="https://down-br.img.susercontent.com/file/sg-11134201-7rdwl-lz45v16eg81694.webp" alt="Produto 2">
+    <h2><a href="https://s.shopee.com.br/5AaNn2VixL " target="_blank"> Projetor Portátil Android 11 Smart Wifi 6 Bluetooth 5.0 1080p </a></h2>
+    <p><strong>R$ 289,99 </strong></p>
+
+      <!-- Imagens pequenas (thumbnails) para selecionar -->
+      <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd6v-lvsww6mbzzcv9f.webp" alt="Thumb 1" onclick="changeImage('mainImage7','https://down-br.img.susercontent.com/file/sg-11134201-7rd6v-lvsww6mbzzcv9f.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd3x-lvsww9g5uzcs25.webp" alt="Thumb 2" onclick="changeImage('mainImage7','https://down-br.img.susercontent.com/file/sg-11134201-7rd3x-lvsww9g5uzcs25.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd68-lvswwbkgrb0s92.webp" alt="Thumb 3" onclick="changeImage('mainImage7','https://down-br.img.susercontent.com/file/sg-11134201-7rd68-lvswwbkgrb0s92.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd69-lvswwh3onrpk91.webp" alt="Thumb 3" onclick="changeImage('mainImage7','https://down-br.img.susercontent.com/file/sg-11134201-7rd69-lvswwh3onrpk91.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd3y-lvswwj4dpeg738.webp" alt="Thumb 3" onclick="changeImage('mainImage7','https://down-br.img.susercontent.com/file/sg-11134201-7rd3y-lvswwj4dpeg738.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd42-lvswwl66peew9a.webp" alt="Thumb 3" onclick="changeImage('mainImage7','https://down-br.img.susercontent.com/file/sg-11134201-7rd42-lvswwl66peew9a.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Video game Stick 4K Com 20000 Jogos">
+    <img id="mainImage8" src="https://down-br.img.susercontent.com/file/sg-11134201-7rd62-lvjn8382u4729e.webp" alt="Produto 2">
+    <h2><a href="https://s.shopee.com.br/30W2CIhfyP" target="_blank">Video game Stick 4K Com 20000 Jogos 64gb 2 Controles Sem Fio Console Portátil Jogos Retro</a></h2>
+    <p><strong>R$ 105,65 </strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd62-lvjn8382u4729e.webp" alt="Thumb 1" onclick="changeImage('mainImage8', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd62-lvjn8382u4729e.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd44-lvjn867qgkjt15.webp" alt="Thumb 2" onclick="changeImage('mainImage8', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd44-lvjn867qgkjt15.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd3p-lvjn88iz2r85ec.webp" alt="Thumb 3" onclick="changeImage('mainImage8', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd3p-lvjn88iz2r85ec.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd3k-lvjn8cwunpt01e.webp" alt="Thumb 4" onclick="changeImage('mainImage8', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd3k-lvjn8cwunpt01e.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd4q-lvjn8b6z69f1c5.webp" alt="Thumb 5" onclick="changeImage('mainImage8', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd4q-lvjn8b6z69f1c5.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd4l-lvjn8fogly9z84.webp" alt="Thumb 6" onclick="changeImage('mainImage8', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd4l-lvjn8fogly9z84.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd6c-lvjn8k8pxl705b.webp" alt="Thumb 7" onclick="changeImage('mainImage8', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd6c-lvjn8k8pxl705b.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Carro Pneu Inflator Bomba De Ar Elétrica">
+    <img id="mainImage9" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f1fz36d.webp" alt="Produto 3">
+    <h2><a href="https://s.shopee.com.br/9KQ5k1IAFz" target="_blank">Carro Pneu Inflator Bomba De Ar Elétrica Mini Portátil Sem Fio Compressor Para Motocicleta Bicicleta</a></h2>
+    <p><strong>R$ 84,49</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f1fz36d.webp" alt="Thumb 1" onclick="changeImage('mainImage9', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f1fz36d.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0et0kf55.webp" alt="Thumb 2" onclick="changeImage('mainImage9', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0et0kf55.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f01ene0.webp" alt="Thumb 3" onclick="changeImage('mainImage9', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f01ene0.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0erlzz1d.webp" alt="Thumb 4" onclick="changeImage('mainImage9', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0erlzz1d.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0eosv3db.webp" alt="Thumb 5" onclick="changeImage('mainImage9', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0eosv3db.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f48pz1e.webp" alt="Thumb 6" onclick="changeImage('mainImage9', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f48pz1e.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f2ujjac.webp" alt="Thumb 7" onclick="changeImage('mainImage9', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f2ujjac.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0eymu7e8.webp" alt="Thumb 8" onclick="changeImage('mainImage9', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0eymu7e8.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Pistola de massagem elétrica">
+    <img id="mainImage10" src="https://down-br.img.susercontent.com/file/sg-11134201-7rdy5-m0t2ag9sifs5a0.webp" alt="Produto 4">
+    <h2><a href="https://s.shopee.com.br/7Kf1MPATx9" target="_blank">Pistola de massagem elétrica, massageador de tecidos profundos ANJGG</a></h2>
+    <p><strong>R$ 34,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdy5-m0t2ag9sifs5a0.webp" alt="Thumb 1" onclick="changeImage('mainImage10', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdy5-m0t2ag9sifs5a0.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdvw-m0t2aefr9w1w5d.webp" alt="Thumb 2" onclick="changeImage('mainImage10', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdvw-m0t2aefr9w1w5d.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdxh-m0t2ahze1pmm16.webp" alt="Thumb 3" onclick="changeImage('mainImage10', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdxh-m0t2ahze1pmm16.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdwj-m0t2ajxb7dr965.webp" alt="Thumb 4" onclick="changeImage('mainImage10', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdwj-m0t2ajxb7dr965.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdx5-m0t2alokleo4d9.webp" alt="Thumb 5" onclick="changeImage('mainImage10', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdx5-m0t2alokleo4d9.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdxb-m0t2aneg2v66ce.webp" alt="Thumb 6" onclick="changeImage('mainImage10', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdxb-m0t2aneg2v66ce.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdxs-m0t2ap7xf18kb3.webp" alt="Thumb 7" onclick="changeImage('mainImage10', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdxs-m0t2ap7xf18kb3.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdxc-m0t2aqz6uglg07.webp" alt="Thumb 8" onclick="changeImage('mainImage10', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdxc-m0t2aqz6uglg07.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdvq-m0t2aszvw2yqc4.webp" alt="Thumb 9" onclick="changeImage('mainImage10', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdvq-m0t2aszvw2yqc4.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="1 Afiador Amolador De Facas Em Aço Inox">
+    <img id="mainImage11" src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgly6f0i4k8va3.webp" alt="Produto 5">
+    <h2><a href="https://s.shopee.com.br/50H6aAw5uE" target="_blank">1 Afiador Amolador De Facas Em Aço Inox Com 3 Borda Profissional Base Emborrachado Promoção</a></h2>
+    <p><strong>R$ 11,98</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgly6f0i4k8va3.webp" alt="Thumb 1" onclick="changeImage('mainImage11', 'https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgly6f0i4k8va3.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgly6f0ia6o69b.webp" alt="Thumb 2" onclick="changeImage('mainImage11', 'https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgly6f0ia6o69b.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgly6f0i5ytb55.webp" alt="Thumb 3" onclick="changeImage('mainImage11', 'https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgly6f0i5ytb55.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgm2h7mssyglbf.webp" alt="Thumb 4" onclick="changeImage('mainImage11', 'https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgm2h7mssyglbf.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgly6f0i7dja94.webp" alt="Thumb 5" onclick="changeImage('mainImage11', 'https://down-br.img.susercontent.com/file/br-11134207-7qukw-lgly6f0i7dja94.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Mini Liquidificador Portátil">
+    <img id="mainImage12" src="https://down-br.img.susercontent.com/file/br-11134207-7r98r-llmij8jiftdm19.webp" alt="Produto 6">
+    <h2><a href="https://s.shopee.com.br/20dV0iADoA" target="_blank">Mini Liquidificador Portátil Shake 6 Laminas + Cabo USB</a></h2>
+    <p><strong>R$ 23,76</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98r-llmij8jiftdm19.webp" alt="Thumb 1" onclick="changeImage('mainImage12', 'https://down-br.img.susercontent.com/file/br-11134207-7r98r-llmij8jiftdm19.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-llmij8jiimiic4.webp" alt="Thumb 2" onclick="changeImage('mainImage12', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-llmij8jiimiic4.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-llmij8jieet654.webp" alt="Thumb 3" onclick="changeImage('mainImage12', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-llmij8jieet654.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98s-llmij8jibloa31.webp" alt="Thumb 4" onclick="changeImage('mainImage12', 'https://down-br.img.susercontent.com/file/br-11134207-7r98s-llmij8jibloa31.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqj84a68n7kv1e.webp" alt="Thumb 5" onclick="changeImage('mainImage12', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqj84a68n7kv1e.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Astronauta Luminária Projetor De Luz">
+    <img id="mainImage13" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqo579pae.webp" alt="Produto 7">
+    <h2><a href="https://s.shopee.com.br/9pMML9k4Oe" target="_blank">Astronauta Luminária Projetor De Luz Estrela Galáxia Nebulosa</a></h2>
+    <p><strong>R$ 59,49</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqo579pae.webp" alt="Thumb 1" onclick="changeImage('mainImage13', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqo579pae.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqo57p701.webp" alt="Thumb 2" onclick="changeImage('mainImage13', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqo57p701.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqnljc4aa.webp" alt="Thumb 3" onclick="changeImage('mainImage13', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqnljc4aa.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqnbprv44.webp" alt="Thumb 4" onclick="changeImage('mainImage13', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqnbprv44.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqnab7fc0.webp" alt="Thumb 5" onclick="changeImage('mainImage13', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqnab7fc0.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqnaaskda.webp" alt="Thumb 6" onclick="changeImage('mainImage13', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrym0pqnaaskda.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Escova Elétrica de Limpeza 5 em 1">
+    <img id="mainImage14" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikmfs546.webp" alt="Produto 8">
+    <h2><a href="https://s.shopee.com.br/30W2CelzKo" target="_blank">Escova Elétrica de Limpeza 5 em 1 Sem Fio Limpador Multiuso Prático Com Mais Duas Cabeças de Escova</a></h2>
+    <p><strong>R$ 31,33</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikmfs546.webp" alt="Thumb 1" onclick="changeImage('mainImage14', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikmfs546.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbiknucla2.webp" alt="Thumb 2" onclick="changeImage('mainImage14', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbiknucla2.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikqnhhf3.webp" alt="Thumb 3" onclick="changeImage('mainImage14', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikqnhhf3.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikp8x166.webp" alt="Thumb 4" onclick="changeImage('mainImage14', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikp8x166.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbiks21xd3.webp" alt="Thumb 5" onclick="changeImage('mainImage14', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbiks21xd3.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikuv6t44.webp" alt="Thumb 6" onclick="changeImage('mainImage14', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikuv6t44.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikw9r93f.webp" alt="Thumb 7" onclick="changeImage('mainImage14', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbikw9r93f.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbiktgmd06.webp" alt="Thumb 8" onclick="changeImage('mainImage14', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luqhhbiktgmd06.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Mop Giratório">
+    <img id="mainImage15" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xyex6e8c6.webp" alt="Produto 9">
+    <h2><a href="https://s.shopee.com.br/BBqrk10gW" target="_blank">Mop Giratório Com cabo de 140 cm Cesto Em Inox - Balde Centrífuga - C/2 Refil + Dispenser Para Sabão</a></h2>
+    <p><strong>R$ 59,90</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xyex6e8c6.webp" alt="Thumb 1" onclick="changeImage('mainImage15', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xyex6e8c6.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xyevrtsc6.webp" alt="Thumb 2" onclick="changeImage('mainImage15', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xyevrtsc6.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl17vr05.webp" alt="Thumb 3" onclick="changeImage('mainImage15', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl17vr05.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl410n8f.webp" alt="Thumb 4" onclick="changeImage('mainImage15', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl410n8f.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl5fl3f7.webp" alt="Thumb 5" onclick="changeImage('mainImage15', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl5fl3f7.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xyesyowfe.webp" alt="Thumb 6" onclick="changeImage('mainImage15', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xyesyowfe.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl6u5j3e.webp" alt="Thumb 7" onclick="changeImage('mainImage15', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl6u5j3e.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl2mg7db.webp" alt="Thumb 8" onclick="changeImage('mainImage15', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvgn7xxl2mg7db.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Pipoqueira Elétrica">
+    <img id="mainImage16" src="https://down-br.img.susercontent.com/file/sg-11134201-7rd61-lvz3363wb0706c.webp" alt="Produto 10">
+    <h2><a href="https://s.shopee.com.br/2qCc2omYJ0" target="_blank">Pipoqueira Elétrica Máquina Fazer Pipoca Sem Óleo POPCORN MAKE 100v-220v</a></h2>
+    <p><strong>R$ 82,90</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd61-lvz3363wb0706c.webp" alt="Thumb 1" onclick="changeImage('mainImage16', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd61-lvz3363wb0706c.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd5e-lvz336t5a20s7d.webp" alt="Thumb 2" onclick="changeImage('mainImage16', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd5e-lvz336t5a20s7d.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd6s-lvz337gqbjyqb3.webp" alt="Thumb 3" onclick="changeImage('mainImage16', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd6s-lvz337gqbjyqb3.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd6o-lvz33a3wga3z47.webp" alt="Thumb 4" onclick="changeImage('mainImage16', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd6o-lvz33a3wga3z47.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd5d-lvz33bhuf6elea.webp" alt="Thumb 5" onclick="changeImage('mainImage16', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd5d-lvz33bhuf6elea.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd61-lvz33dqb5g1118.webp" alt="Thumb 6" onclick="changeImage('mainImage16', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd61-lvz33dqb5g1118.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd6c-lvz33efk5w825e.webp" alt="Thumb 7" onclick="changeImage('mainImage16', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd6c-lvz33efk5w825e.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Luminária de Mesa de LED 3D Criativa">
+    <img id="mainImage17" src="https://down-br.img.susercontent.com/file/864a0669b52f69411ece31c98198126f.webp" alt="Produto 11">
+    <h2><a href="https://s.shopee.com.br/8UqynOADqc" target="_blank">Luminária de Mesa de LED 3D Criativa / Luz Noturna Decorativa</a></h2>
+    <p><strong>R$ 22,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/864a0669b52f69411ece31c98198126f.webp" alt="Thumb 1" onclick="changeImage('mainImage17', 'https://down-br.img.susercontent.com/file/864a0669b52f69411ece31c98198126f.webp')">
+        <img src="https://down-br.img.susercontent.com/file/901aa4d239f8e97a985b38cc1a074d10.webp" alt="Thumb 2" onclick="changeImage('mainImage17', 'https://down-br.img.susercontent.com/file/901aa4d239f8e97a985b38cc1a074d10.webp')">
+        <img src="https://down-br.img.susercontent.com/file/ff10d9c11d54714823ec8670f1a8a3c6.webp" alt="Thumb 3" onclick="changeImage('mainImage17', 'https://down-br.img.susercontent.com/file/ff10d9c11d54714823ec8670f1a8a3c6.webp')">
+        <img src="https://down-br.img.susercontent.com/file/05e1f7bada13db4ff2afa377be5158f3.webp" alt="Thumb 4" onclick="changeImage('mainImage17', 'https://down-br.img.susercontent.com/file/05e1f7bada13db4ff2afa377be5158f3.webp')">
+        <img src="https://down-br.img.susercontent.com/file/c1fdbb30715924e706bff288d63d91f3.webp" alt="Thumb 5" onclick="changeImage('mainImage17', 'https://down-br.img.susercontent.com/file/c1fdbb30715924e706bff288d63d91f3.webp')">
+        <img src="https://down-br.img.susercontent.com/file/1c36289fb5dc6e4fd5cf62aa8e59378a.webp" alt="Thumb 6" onclick="changeImage('mainImage17', 'https://down-br.img.susercontent.com/file/1c36289fb5dc6e4fd5cf62aa8e59378a.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Kit de Facas Churrasco Profissional">
+    <img id="mainImage18" src="https://down-br.img.susercontent.com/file/sg-11134201-7rd4k-lu5etfkbmlecf4.webp" alt="Produto 12">
+    <h2><a href="https://s.shopee.com.br/609dowktzl" target="_blank">Kit de Facas Churrasco Profissional Antiaderente 6 Peças</a></h2>
+    <p><strong>R$ 19,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd4k-lu5etfkbmlecf4.webp" alt="Thumb 1" onclick="changeImage('mainImage18', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd4k-lu5etfkbmlecf4.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd66-lu5etj3egmy186.webp" alt="Thumb 2" onclick="changeImage('mainImage18', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd66-lu5etj3egmy186.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd6t-lu5etm4g12ixcc.webp" alt="Thumb 3" onclick="changeImage('mainImage18', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd6t-lu5etm4g12ixcc.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd6k-lu5etsjkmu0778.webp" alt="Thumb 4" onclick="changeImage('mainImage18', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd6k-lu5etsjkmu0778.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rd6h-lu5etpqkqmp357.webp" alt="Thumb 5" onclick="changeImage('mainImage18', 'https://down-br.img.susercontent.com/file/sg-11134201-7rd6h-lu5etpqkqmp357.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Escova De Limpeza Ajustável Janela Banheiro e Cozinha">
+    <img id="mainImage19" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqp8s8f2ez2bc0.webp" alt="Produto 13">
+    <h2><a href="https://s.shopee.com.br/1VhESotNa8" target="_blank">Escova De Limpeza Ajustável Janela Banheiro e Cozinha Ferramenta 3 em 1 Recarregável</a></h2>
+    <p><strong>R$ 97,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqp8s8f2ez2bc0.webp" alt="Thumb 1" onclick="changeImage('mainImage19', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqp8s8f2ez2bc0.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lndeu1yfzgen29.webp" alt="Thumb 2" onclick="changeImage('mainImage19', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lndeu1yfzgen29.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ln92reyb3shn98.webp" alt="Thumb 3" onclick="changeImage('mainImage19', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ln92reyb3shn98.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lpu3cvbaqbs7ef.webp" alt="Thumb 4" onclick="changeImage('mainImage19', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lpu3cvbaqbs7ef.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ln91fcbvnuwzbd.webp" alt="Thumb 5" onclick="changeImage('mainImage19', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ln91fcbvnuwzbd.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqp8s8f2gdmrdf.webp" alt="Thumb 6" onclick="changeImage('mainImage19', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqp8s8f2gdmrdf.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lpu3cvbarqcn55.webp" alt="Thumb 7" onclick="changeImage('mainImage19', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lpu3cvbarqcn55.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ln91fcbvnunvdc.webp" alt="Thumb 8" onclick="changeImage('mainImage19', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ln91fcbvnunvdc.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ln92mhq0gl6r04.webp" alt="Thumb 9" onclick="changeImage('mainImage19', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ln92mhq0gl6r04.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Mini Processador Elétrico de Alimentos Portátil">
+    <img id="mainImage20" src="https://down-br.img.susercontent.com/file/588eea9b630cf18620fc565d5c98ac1e.webp" alt="Produto 14">
+    <h2><a href="https://s.shopee.com.br/AKIczE8e7k" target="_blank">Mini Processador Elétrico de Alimentos Portátil com 3 lâminas de aço inox USB 250 ml Bivolt</a></h2>
+    <p><strong>R$ 20,89</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/588eea9b630cf18620fc565d5c98ac1e.webp" alt="Thumb 1" onclick="changeImage('mainImage20', 'https://down-br.img.susercontent.com/file/588eea9b630cf18620fc565d5c98ac1e.webp')">
+        <img src="https://down-br.img.susercontent.com/file/f70efdbcc44e12cfe2e5a66b0bcdd7d7.webp" alt="Thumb 2" onclick="changeImage('mainImage20', 'https://down-br.img.susercontent.com/file/f70efdbcc44e12cfe2e5a66b0bcdd7d7.webp')">
+        <img src="https://down-br.img.susercontent.com/file/9e1c95df9e76c21a5c3225f091087d9f.webp" alt="Thumb 3" onclick="changeImage('mainImage20', 'https://down-br.img.susercontent.com/file/9e1c95df9e76c21a5c3225f091087d9f.webp')">
+        <img src="https://down-br.img.susercontent.com/file/002f6fcded0c65c645962c6c277cb4a3.webp" alt="Thumb 4" onclick="changeImage('mainImage20', 'https://down-br.img.susercontent.com/file/002f6fcded0c65c645962c6c277cb4a3.webp')">
+        <img src="https://down-br.img.susercontent.com/file/c028761f0e13a225db54e4ea28e05f7a.webp" alt="Thumb 5" onclick="changeImage('mainImage20', 'https://down-br.img.susercontent.com/file/c028761f0e13a225db54e4ea28e05f7a.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Adesivos de cozinha Resistente">
+    <img id="mainImage21" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltdwhgp2iyig92.webp" alt="Produto 15">
+    <h2><a href="https://s.shopee.com.br/8Uqynz8L14" target="_blank">Adesivos de cozinha Resistente a Agua/Óleo/Fogo/Papel parede - Usável em fogão/armário/porta Inovação</a></h2>
+    <p><strong>R$ 19,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltdwhgp2iyig92.webp" alt="Thumb 1" onclick="changeImage('mainImage21', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltdwhgp2iyig92.webp')">
+        <img src="https://down-br.img.susercontent.com/file/b2a27be9f11f1c23a56191a6772dd3bc.webp" alt="Thumb 2" onclick="changeImage('mainImage21', 'https://down-br.img.susercontent.com/file/b2a27be9f11f1c23a56191a6772dd3bc.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lh6ms9c05a5yab.webp" alt="Thumb 3" onclick="changeImage('mainImage21', 'https://down-br.img.susercontent.com/file/br-11134207-7qukw-lh6ms9c05a5yab.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lf14aozj6ian69.webp" alt="Thumb 4" onclick="changeImage('mainImage21', 'https://down-br.img.susercontent.com/file/br-11134207-7qukw-lf14aozj6ian69.webp')">
+        <img src="https://down-br.img.susercontent.com/file/60ed1e6d63d0925ec3a53f357365b22f.webp" alt="Thumb 5" onclick="changeImage('mainImage21', 'https://down-br.img.susercontent.com/file/60ed1e6d63d0925ec3a53f357365b22f.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljeghjaphgs5d4.webp" alt="Thumb 6" onclick="changeImage('mainImage21', 'https://down-br.img.susercontent.com/file/br-11134207-7qukw-ljeghjaphgs5d4.webp')">
+    </div>
+</div>
+
+<div class="product-card" data-name="Refrigerador De Ar Ventilador Umidificador Portátil">
+    <img id="mainImage22" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqdgm4imqjona0.webp" alt="Produto 16">
+    <h2><a href="https://s.shopee.com.br/2ftBrNnN9Y" target="_blank">Refrigerador De Ar Ventilador Umidificador Portátil Com Led Reservatório De Água Led</a></h2>
+    <p><strong>R$ 34,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqdgm4imqjona0.webp" alt="Thumb 1" onclick="changeImage('mainImage22', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqdgm4imqjona0.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqdgm4imqk2nd9.webp" alt="Thumb 2" onclick="changeImage('mainImage22', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqdgm4imqk2nd9.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqdgm4imqk8z57.webp" alt="Thumb 3" onclick="changeImage('mainImage22', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqdgm4imqk8z57.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqdgm4imrytfc5.webp" alt="Thumb 4" onclick="changeImage('mainImage22', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqdgm4imrytfc5.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m02ca3qfilwpb1.webp" alt="Thumb 5" onclick="changeImage('mainImage22', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m02ca3qfilwpb1.webp')">
+    </div>
+</div>
+
+<!-- Produto 1: 400ML 6 Lâminas Espremedor Elétrico Mini Liquidificador Portátil -->
+<div class="product-card" data-name="400ML 6 Lâminas Espremedor Elétrico Mini Liquidificador Portátil">
+    <img id="mainImage23" src="https://down-br.img.susercontent.com/file/sg-11134201-7rdxl-lya3mnf1b02wbc.webp" alt="Produto 1">
+    <h2><a href="https://s.shopee.com.br/1VhG30lL8P" target="_blank">400ML 6 Lâminas Espremedor Elétrico Mini Liquidificador Portátil</a></h2>
+    <p><strong>R$ 32,88</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdxl-lya3mnf1b02wbc.webp" alt="Thumb 1" onclick="changeImage('mainImage23', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdxl-lya3mnf1b02wbc.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdvk-lya3mpdifuxu0a.webp" alt="Thumb 2" onclick="changeImage('mainImage23', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdvk-lya3mpdifuxu0a.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdw6-lya3mrdxhvra5b.webp" alt="Thumb 3" onclick="changeImage('mainImage23', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdw6-lya3mrdxhvra5b.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdwj-lya3mtkqakg6c7.webp" alt="Thumb 4" onclick="changeImage('mainImage23', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdwj-lya3mtkqakg6c7.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdy2-lya3mvnn8y0c78.webp" alt="Thumb 5" onclick="changeImage('mainImage23', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdy2-lya3mvnn8y0c78.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdwk-lya3n00yxjlgec.webp" alt="Thumb 6" onclick="changeImage('mainImage23', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdwk-lya3n00yxjlgec.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdxx-lya3mxry5ad3d6.webp" alt="Thumb 7" onclick="changeImage('mainImage23', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdxx-lya3mxry5ad3d6.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdvz-lya3n2chgi7g08.webp" alt="Thumb 8" onclick="changeImage('mainImage23', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdvz-lya3n2chgi7g08.webp')">
+    </div>
+</div>
+
+<!-- Produto 2: Jogo De Talheres Conjunto Faqueiro Utensílios Cozinha 19 Peças De Silicone -->
+<div class="product-card" data-name="Jogo De Talheres Conjunto Faqueiro Utensílios Cozinha 19 Peças De Silicone">
+    <img id="mainImage24" src="https://down-br.img.susercontent.com/file/sg-11134201-7rcfd-lrd7dq43ht9ib9.webp" alt="Produto 2">
+    <h2><a href="https://s.shopee.com.br/6fPMChIDXm" target="_blank">Jogo De Talheres Conjunto Faqueiro Utensílios Cozinha 19 Peças De Silicone</a></h2>
+    <p><strong>R$ 79,90</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rcfd-lrd7dq43ht9ib9.webp" alt="Thumb 1" onclick="changeImage('mainImage24', 'https://down-br.img.susercontent.com/file/sg-11134201-7rcfd-lrd7dq43ht9ib9.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rcds-lrd7do5cdcf749.webp" alt="Thumb 2" onclick="changeImage('mainImage24', 'https://down-br.img.susercontent.com/file/sg-11134201-7rcds-lrd7do5cdcf749.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rcf4-lrd7ds0wp4bla6.webp" alt="Thumb 3" onclick="changeImage('mainImage24', 'https://down-br.img.susercontent.com/file/sg-11134201-7rcf4-lrd7ds0wp4bla6.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rcc2-lrd7dtuo0w4y99.webp" alt="Thumb 4" onclick="changeImage('mainImage24', 'https://down-br.img.susercontent.com/file/sg-11134201-7rcc2-lrd7dtuo0w4y99.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rcdf-lrd7dvl3hj0bf1.webp" alt="Thumb 5" onclick="changeImage('mainImage24', 'https://down-br.img.susercontent.com/file/sg-11134201-7rcdf-lrd7dvl3hj0bf1.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rcdp-lrd7dx4b8q2q43.webp" alt="Thumb 6" onclick="changeImage('mainImage24', 'https://down-br.img.susercontent.com/file/sg-11134201-7rcdp-lrd7dx4b8q2q43.webp')">
+    </div>
+</div>
+
+<!-- Produto 3: Copo Térmico Inox Portátil 1200ml/1.2L Garrafa Térmica Inoxidável -->
+<div class="product-card" data-name="Copo Térmico Inox Portátil 1200ml/1.2L Garrafa Térmica Inoxidável">
+    <img id="mainImage25" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslc3vz430.webp" alt="Produto 3">
+    <h2><a href="https://s.shopee.com.br/4VKrcsIEV0" target="_blank">Copo Térmico Inox Portátil 1200ml/1.2L Garrafa Térmica Inoxidável</a></h2>
+    <p><strong>R$ 59,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslc3vz430.webp" alt="Thumb 1" onclick="changeImage('mainImage25', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslc3vz430.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslc9i8w12.webp" alt="Thumb 2" onclick="changeImage('mainImage25', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslc9i8w12.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslccbds16.webp" alt="Thumb 3" onclick="changeImage('mainImage25', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslccbds16.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslcawtc1e.webp" alt="Thumb 4" onclick="changeImage('mainImage25', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslcawtc1e.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslc9if590.webp" alt="Thumb 5" onclick="changeImage('mainImage25', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslc9if590.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslcawzl42.webp" alt="Thumb 6" onclick="changeImage('mainImage25', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslcawzl42.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslc5ajk77.webp" alt="Thumb 7" onclick="changeImage('mainImage25', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslc5ajk77.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslbzog1c5.webp" alt="Thumb 8" onclick="changeImage('mainImage25', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0oduslbzog1c5.webp')">
+    </div>
+</div>
+
+<!-- Produto 1: Lâmpada Bluetooth Led Caixa De Som com controle 12w -->
+<div class="product-card" data-name="Lâmpada Bluetooth Led Caixa De Som com controle 12w">
+    <img id="mainImage26" src="https://down-br.img.susercontent.com/file/40e7d6ed524b8d0823aeed8aa263d703.webp" alt="Produto 1">
+    <h2><a href="https://s.shopee.com.br/AUc4mMsGnr" target="_blank">Lâmpada Bluetooth Led Caixa De Som com controle 12w</a></h2>
+    <p><strong>R$ 21,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/40e7d6ed524b8d0823aeed8aa263d703.webp" alt="Thumb 1" onclick="changeImage('mainImage26', 'https://down-br.img.susercontent.com/file/40e7d6ed524b8d0823aeed8aa263d703.webp')">
+        <img src="https://down-br.img.susercontent.com/file/36a961d30a4670c9140649cd2545d709.webp" alt="Thumb 2" onclick="changeImage('mainImage26', 'https://down-br.img.susercontent.com/file/36a961d30a4670c9140649cd2545d709.webp')">
+        <img src="https://down-br.img.susercontent.com/file/a427d2b5849572204d20a0ad3e0969a3.webp" alt="Thumb 3" onclick="changeImage('mainImage26', 'https://down-br.img.susercontent.com/file/a427d2b5849572204d20a0ad3e0969a3.webp')">
+        <img src="https://down-br.img.susercontent.com/file/57727ea0bbe13cad5faf17e56da5d4bd.webp" alt="Thumb 4" onclick="changeImage('mainImage26', 'https://down-br.img.susercontent.com/file/57727ea0bbe13cad5faf17e56da5d4bd.webp')">
+        <img src="https://down-br.img.susercontent.com/file/74bff2c976ce12bca6b278270522f208.webp" alt="Thumb 5" onclick="changeImage('mainImage26', 'https://down-br.img.susercontent.com/file/74bff2c976ce12bca6b278270522f208.webp')">
+    </div>
+</div>
+
+<!-- Produto 2: Lixeira com Sensor Automático Inteligente -->
+<div class="product-card" data-name="Lixeira com Sensor Automático Inteligente Abre Fácil em Toque Cesto Lixo Casa Quarto Banheiro Cozinha Escritório 16 Litros">
+    <img id="mainImage27" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lv205cqzejdp98.webp" alt="Produto 2">
+    <h2><a href="https://s.shopee.com.br/30W3qlP6po" target="_blank">Lixeira com Sensor Automático Inteligente Abre Fácil em Toque Cesto Lixo Casa Quarto Banheiro Cozinha Escritório 16 Litros</a></h2>
+    <p><strong>R$ 84,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lv205cqzejdp98.webp" alt="Thumb 1" onclick="changeImage('mainImage27', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lv205cqzejdp98.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lv205cqzbq8t15.webp" alt="Thumb 2" onclick="changeImage('mainImage27', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lv205cqzbq8t15.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lv205cqzd4t9b9.webp" alt="Thumb 3" onclick="changeImage('mainImage27', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lv205cqzd4t9b9.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lr3ogsg0xqfhc9.webp" alt="Thumb 4" onclick="changeImage('mainImage27', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lr3ogsg0xqfhc9.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lr3h3uuwcpicdc.webp" alt="Thumb 5" onclick="changeImage('mainImage27', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lr3h3uuwcpicdc.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvfkpu3h60x3cb.webp" alt="Thumb 6" onclick="changeImage('mainImage27', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvfkpu3h60x3cb.webp')">
+    </div>
+</div>
+
+<!-- Produto 3: Cortador Multifuncional Fatiador De Verduras/frutas/legumes -->
+<div class="product-card" data-name="Cortador Multifuncional Fatiador De Verduras/frutas/legumes">
+    <img id="mainImage28" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lui6ym94kvol82.webp" alt="Produto 3">
+    <h2><a href="https://s.shopee.com.br/8Ur0P0rnxw" target="_blank">Cortador Multifuncional Fatiador De Verduras/frutas/legumes</a></h2>
+    <p><strong>R$ 50,49</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lui6ym94kvol82.webp" alt="Thumb 1" onclick="changeImage('mainImage28', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lui6ym94kvol82.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luhtzleg6x7860.webp" alt="Thumb 2" onclick="changeImage('mainImage28', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luhtzleg6x7860.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luhtzlegfclw28.webp" alt="Thumb 3" onclick="changeImage('mainImage28', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luhtzlegfclw28.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lui6ym94jh45bc.webp" alt="Thumb 4" onclick="changeImage('mainImage28', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lui6ym94jh45bc.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luhtzleg9qc453.webp" alt="Thumb 5" onclick="changeImage('mainImage28', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luhtzleg9qc453.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-luhtzleq2avo33.webp" alt="Thumb 6" onclick="changeImage('mainImage28', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-luhtzleq2avo33.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lui6ym94gnz964.webp" alt="Thumb 7" onclick="changeImage('mainImage28', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lui6ym94gnz964.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu7tg5s9wgv414.webp" alt="Thumb 8" onclick="changeImage('mainImage28', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu7tg5s9wgv414.webp')">
+    </div>
+</div>
+
+<!-- Produto 4: Jogo de Lençol 03 Peças 400 Fios Cama Casal Queen Micropercal Ponto Palito -->
+<div class="product-card" data-name="Jogo de Lençol 03 Peças 400 Fios Cama Casal Queen Micropercal Ponto Palito">
+    <img id="mainImage29" src="https://down-br.img.susercontent.com/file/sg-11134201-7rbl7-lmxhpfuo0pwjb4.webp" alt="Produto 4">
+    <h2><a href="https://s.shopee.com.br/50H8Ez8IYl" target="_blank">Jogo de Lençol 03 Peças 400 Fios Cama Casal Queen Micropercal Ponto Palito</a></h2>
+    <p><strong>R$ 34,90</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rbl7-lmxhpfuo0pwjb4.webp" alt="Thumb 1" onclick="changeImage('mainImage29', 'https://down-br.img.susercontent.com/file/sg-11134201-7rbl7-lmxhpfuo0pwjb4.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rbl9-lmxhplptcwsl78.webp" alt="Thumb 2" onclick="changeImage('mainImage29', 'https://down-br.img.susercontent.com/file/sg-11134201-7rbl9-lmxhplptcwsl78.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rbkc-lmxhpkjx27xla2.webp" alt="Thumb 3" onclick="changeImage('mainImage29', 'https://down-br.img.susercontent.com/file/sg-11134201-7rbkc-lmxhpkjx27xla2.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rbm6-lmxhpjsg6f1le8.webp" alt="Thumb 4" onclick="changeImage('mainImage29', 'https://down-br.img.susercontent.com/file/sg-11134201-7rbm6-lmxhpjsg6f1le8.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rbkm-lmxhpgy2c95lef.webp" alt="Thumb 5" onclick="changeImage('mainImage29', 'https://down-br.img.susercontent.com/file/sg-11134201-7rbkm-lmxhpgy2c95lef.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lzfi5gsqzsbp5e.webp" alt="Thumb 6" onclick="changeImage('mainImage29', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lzfi5gsqzsbp5e.webp')">
+    </div>
+</div>
+
+<!-- Produto 5: Seladora à Vácuo para Armazenar Alimentos Domésticos -->
+<div class="product-card" data-name="Seladora à Vácuo para Armazenar Alimentos Domésticos">
+    <img id="mainImage30" src="https://down-br.img.susercontent.com/file/sg-11134201-22110-5zwa0ytipqjvb2.webp" alt="Produto 5">
+    <h2><a href="https://s.shopee.com.br/2LGN4CX5GT" target="_blank">Seladora à Vácuo para Armazenar Alimentos Domésticos</a></h2>
+    <p><strong>R$ 40,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-5zwa0ytipqjvb2.webp" alt="Thumb 1" onclick="changeImage('mainImage30', 'https://down-br.img.susercontent.com/file/sg-11134201-22110-5zwa0ytipqjvb2.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-b7yig74prqjv02.webp" alt="Thumb 2" onclick="changeImage('mainImage30', 'https://down-br.img.susercontent.com/file/sg-11134201-22110-b7yig74prqjv02.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-22110-b7yig74prqjv02.webp" alt="Thumb 3" onclick="changeImage('mainImage30', 'https://down-br.img.susercontent.com/file/sg-11134201-22110-b7yig74prqjv02.webp')">
+        <img src="https://down-br.img.susercontent.com/file/7b76b1f921ebd1665750970d2e77866d.webp" alt="Thumb 4" onclick="changeImage('mainImage30', 'https://down-br.img.susercontent.com/file/7b76b1f921ebd1665750970d2e77866d.webp')">
+        <img src="https://down-br.img.susercontent.com/file/4ce9bb8f4d996c2b3187cb44b26fea47.webp" alt="Thumb 5" onclick="changeImage('mainImage30', 'https://down-br.img.susercontent.com/file/4ce9bb8f4d996c2b3187cb44b26fea47.webp')">
+        <img src="https://down-br.img.susercontent.com/file/be79547a09710510a5915a257d4e4d87.webp" alt="Thumb 6" onclick="changeImage('mainImage30', 'https://down-br.img.susercontent.com/file/be79547a09710510a5915a257d4e4d87.webp')">
+        <img src="https://down-br.img.susercontent.com/file/375fa2978e531693e1b201e8b00b1214.webp" alt="Thumb 7" onclick="changeImage('mainImage30', 'https://down-br.img.susercontent.com/file/375fa2978e531693e1b201e8b00b1214.webp')">
+    </div>
+</div>
+
+<!-- Produto 6: Carregador Portátil Power Bank 20.000mah 959 JorgeStore -->
+<div class="product-card" data-name="Carregador Portátil Power Bank 20.000mah 959 JorgeStore">
+    <img id="mainImage31" src="https://down-br.img.susercontent.com/file/sg-11134201-7rdww-lyzcn9lwv2ai63.webp" alt="Produto 6">
+    <h2><a href="https://s.shopee.com.br/5fWp2c4Seb" target="_blank">Carregador Portátil Power Bank 20.000mah 959 JorgeStore</a></h2>
+    <p><strong>R$ 51,88</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdww-lyzcn9lwv2ai63.webp" alt="Thumb 1" onclick="changeImage('mainImage31', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdww-lyzcn9lwv2ai63.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdxx-lyzcnc2p7q5o66.webp" alt="Thumb 2" onclick="changeImage('mainImage31', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdxx-lyzcnc2p7q5o66.webp')">
+        <img src="https://down-br.img.susercontent.com/file/sg-11134201-7rdxb-lyzcngy2342idd.webp" alt="Thumb 3" onclick="changeImage('mainImage31', 'https://down-br.img.susercontent.com/file/sg-11134201-7rdxb-lyzcngy2342idd.webp')">
+    </div>
+</div>
+
+<!-- Produto 7: Spray Pulverizador Borrifador Azeite Vinagre em Vidro -->
+<div class="product-card" data-name="Spray Pulverizador Borrifador Azeite Vinagre em Vidro">
+    <img id="mainImage32" src="https://down-br.img.susercontent.com/file/7333bbaac30f8c9c13d2200c14dcdb2f.webp" alt="Produto 7">
+    <h2><a href="https://s.shopee.com.br/7UyTE7KVkJ" target="_blank">Spray Pulverizador Borrifador Azeite Vinagre em Vidro</a></h2>
+    <p><strong>R$ 10,90</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/7333bbaac30f8c9c13d2200c14dcdb2f.webp" alt="Thumb 1" onclick="changeImage('mainImage32', 'https://down-br.img.susercontent.com/file/7333bbaac30f8c9c13d2200c14dcdb2f.webp')">
+        <img src="https://down-br.img.susercontent.com/file/1408ecd5ec2bbb9b3130a2fc02bec3dd.webp" alt="Thumb 2" onclick="changeImage('mainImage32', 'https://down-br.img.susercontent.com/file/1408ecd5ec2bbb9b3130a2fc02bec3dd.webp')">
+        <img src="https://down-br.img.susercontent.com/file/12705dfffae3245349f5bef7720b0b59.webp" alt="Thumb 3" onclick="changeImage('mainImage32', 'https://down-br.img.susercontent.com/file/12705dfffae3245349f5bef7720b0b59.webp')">
+        <img src="https://down-br.img.susercontent.com/file/7e114462d7e2293e81c14b043839e137.webp" alt="Thumb 4" onclick="changeImage('mainImage32', 'https://down-br.img.susercontent.com/file/7e114462d7e2293e81c14b043839e137.webp')">
+    </div>
+</div>
+
+<!-- Produto 8: Tapete Banheiro Antiderrapante Absorvente de Secagem Rápida -->
+<div class="product-card" data-name="Tapete Banheiro Antiderrapante Absorvente de Secagem Rápida">
+    <img id="mainImage33" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxcz7dysnzcv7d.webp" alt="Produto 8">
+    <h2><a href="https://s.shopee.com.br/4VKreiTF2x" target="_blank">Tapete Banheiro Antiderrapante Absorvente de Secagem Rápida</a></h2>
+    <p><strong>R$ 19,99</strong></p>
+
+    <!-- Imagens pequenas (thumbnails) para selecionar -->
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxcz7dysnzcv7d.webp" alt="Thumb 1" onclick="changeImage('mainImage33', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxcz7dysnzcv7d.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m145sble03ta13.webp" alt="Thumb 2" onclick="changeImage('mainImage33', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m145sble03ta13.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0k6q3a373a577.webp" alt="Thumb 3" onclick="changeImage('mainImage33', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0k6q3a373a577.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxcz7dyspdxb9f.webp" alt="Thumb 4" onclick="changeImage('mainImage33', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxcz7dyspdxb9f.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxcz7dysqshraa.webp" alt="Thumb 5" onclick="changeImage('mainImage33', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxcz7dysqshraa.webp')">
+    </div>
+</div>
+
+<!-- Produto 9: H'maston RS-30 Fone de Ouvido Sem fio Gamer Bluetooth 5.3 -->
+<div class="product-card" data-name="H'maston RS-30 Fone de Ouvido Sem fio Gamer Bluetooth 5.3">
+    <img id="mainImage34" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwflmagkz7p1fa.webp" alt="Produto 9">
+    <h2><a href="https://s.shopee.com.br/7Kf323Ap9g" target="_blank">H'maston RS-30 Fone de Ouvido Sem fio Gamer Bluetooth 5.3</a></h2>
+    <p><strong>R$ 53,99</strong></p>
+
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwflmagkz7p1fa.webp" alt="Thumb 1" onclick="changeImage('mainImage34', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwflmagkz7p1fa.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lsmkug9ecksbbd.webp" alt="Thumb 2" onclick="changeImage('mainImage34', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lsmkug9ecksbbd.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lsmkug9efdx7c9.webp" alt="Thumb 3" onclick="changeImage('mainImage34', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lsmkug9efdx7c9.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lsmkug9e9rnfe6.webp" alt="Thumb 4" onclick="changeImage('mainImage34', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lsmkug9e9rnfe6.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu1kkzq4rm9155.webp" alt="Thumb 5" onclick="changeImage('mainImage34', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu1kkzq4rm9155.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu7gu2w9mt1web.webp" alt="Thumb 6" onclick="changeImage('mainImage34', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lu7gu2w9mt1web.webp')">
+    </div>
+</div>
+
+<!-- Produto 10: Suporte Escova De Dentes Esterilizador Com Luz UV -->
+<div class="product-card" data-name="Suporte Escova De Dentes Esterilizador Com Luz UV">
+    <img id="mainImage35" src="https://down-br.img.susercontent.com/file/b56362987f227a94215860082aca9309.webp" alt="Produto 10">
+    <h2><a href="https://s.shopee.com.br/6AT5e2PN2W" target="_blank">Suporte Escova De Dentes Esterilizador Com Luz UV</a></h2>
+    <p><strong>R$ 28,88</strong></p>
+
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/b56362987f227a94215860082aca9309.webp" alt="Thumb 1" onclick="changeImage('mainImage35', 'https://down-br.img.susercontent.com/file/b56362987f227a94215860082aca9309.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-23020-l6qncaxxvxnvb8.webp" alt="Thumb 2" onclick="changeImage('mainImage35', 'https://down-br.img.susercontent.com/file/br-11134207-23020-l6qncaxxvxnvb8.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-23030-rsbuqrzvhcov78.webp" alt="Thumb 3" onclick="changeImage('mainImage35', 'https://down-br.img.susercontent.com/file/br-11134207-23030-rsbuqrzvhcov78.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-23020-ot4nghp3vxnvdd.webp" alt="Thumb 4" onclick="changeImage('mainImage35', 'https://down-br.img.susercontent.com/file/br-11134207-23020-ot4nghp3vxnvdd.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-23020-xm5memt17ynvd3.webp" alt="Thumb 5" onclick="changeImage('mainImage35', 'https://down-br.img.susercontent.com/file/br-11134207-23020-xm5memt17ynvd3.webp')">
+    </div>
+</div>
+
+<!-- Produto 11: Puff Gigante Redondo 140x20 -->
+<div class="product-card" data-name="Puff Gigante Redondo 140x20">
+    <img id="mainImage36" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lujtfnzf2s11c1.webp" alt="Produto 11">
+    <h2><a href="https://s.shopee.com.br/qRZIR4wy3" target="_blank">Puff Gigante Redondo 140x20</a></h2>
+    <p><strong>R$ 68,00</strong></p>
+
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lujtfnzf2s11c1.webp" alt="Thumb 1" onclick="changeImage('mainImage36', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lujtfnzf2s11c1.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lujtfnz55ztgc1.webp" alt="Thumb 2" onclick="changeImage('mainImage36', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lujtfnz55ztgc1.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lujtfnuz99wl8e.webp" alt="Thumb 3" onclick="changeImage('mainImage36', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lujtfnuz99wl8e.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lujtfnuz9a3k62.webp" alt="Thumb 4" onclick="changeImage('mainImage36', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lujtfnuz9a3k62.webp')">
+    </div>
+</div>
+
+<!-- Produto 12: 1/2 Rack de Pratos em Camadas -->
+<div class="product-card" data-name="1/2 Rack de Pratos em Camadas">
+    <img id="mainImage37" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdy16x036aaab.webp" alt="Produto 12">
+    <h2><a href="https://s.shopee.com.br/8fAQcvz6Uy" target="_blank">1/2 Rack de Pratos em Camadas</a></h2>
+    <p><strong>R$ 136,99</strong></p>
+
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdy16x036aaab.webp" alt="Thumb 1" onclick="changeImage('mainImage37', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdy16x036aaab.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii47iqa92.webp" alt="Thumb 2" onclick="changeImage('mainImage37', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii47iqa92.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii4bqfmb4.webp" alt="Thumb 3" onclick="changeImage('mainImage37', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii4bqfmb4.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii44ple94.webp" alt="Thumb 4" onclick="changeImage('mainImage37', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii44ple94.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii4645u67.webp" alt="Thumb 5" onclick="changeImage('mainImage37', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii4645u67.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii4abv65c.webp" alt="Thumb 6" onclick="changeImage('mainImage37', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii4abv65c.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii48xaqde.webp" alt="Thumb 7" onclick="changeImage('mainImage37', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lwdsmii48xaqde.webp')">
+    </div>
+</div>
+
+<!-- Produto 13: Espelho Grande Retangular Corpo Inteiro -->
+<div class="product-card" data-name="Espelho Grande Retangular Corpo Inteiro">
+    <img id="mainImage38" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvyn60lx4nlif5.webp" alt="Produto 13">
+    <h2><a href="https://s.shopee.com.br/30W3sdvRjH" target="_blank">Espelho Grande Retangular Corpo Inteiro</a></h2>
+    <p><strong>R$ 105,90</strong></p>
+
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvyn60lx4nlif5.webp" alt="Thumb 1" onclick="changeImage('mainImage38', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvyn60lx4nlif5.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvyn60lx391227.webp" alt="Thumb 2" onclick="changeImage('mainImage38', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvyn60lx391227.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvyn60lx1ugm9a.webp" alt="Thumb 3" onclick="changeImage('mainImage38', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvyn60lx1ugm9a.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m01z2bsgf887cf.webp" alt="Thumb 4" onclick="changeImage('mainImage38', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m01z2bsgf887cf.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m01z2bsggmsnd1.webp" alt="Thumb 5" onclick="changeImage('mainImage38', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m01z2bsggmsnd1.webp')">
+    </div>
+</div>
+
+<!-- Produto 14: Capa Para Colchão Impermeável Matelado -->
+<div class="product-card" data-name="Capa Para Colchão Impermeável Matelado">
+    <img id="mainImage39" src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq5uudff.webp" alt="Produto 14">
+    <h2><a href="https://s.shopee.com.br/9pMO1J6fu3" target="_blank">Capa Para Colchão Impermeável Matelado</a></h2>
+    <p><strong>R$ 23,00</strong></p>
+
+    <div class="thumbnail-images">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq5uudff.webp" alt="Thumb 1" onclick="changeImage('mainImage39', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq5uudff.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq5v1c0a.webp" alt="Thumb 2" onclick="changeImage('mainImage39', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq5v1c0a.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq5uvo6f.webp" alt="Thumb 3" onclick="changeImage('mainImage39', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq5uvo6f.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq79lsb7.webp" alt="Thumb 4" onclick="changeImage('mainImage39', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ltwjwwwq79lsb7.webp')">
+        <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lw8kz1xz032qa2.webp" alt="Thumb 5" onclick="changeImage('mainImage39', 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lw8kz1xz032qa2.webp')">
+    </div>
+</div>
+
+</div>
+
+<footer>
+    <p>&copy; 2024 Tesouros da shopee. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    // Função para trocar a imagem principal do produto
+    function changeImage(mainImgId, newSrc) {
+        document.getElementById(mainImgId).src = newSrc;
+    }
+
+    // Função para fazer a busca dos produtos
+    function searchProduct() {
+        // Captura o valor da pesquisa
+        var input = document.getElementById('searchInput').value.toLowerCase();
+        // Seleciona todos os produtos
+        var products = document.querySelectorAll('.product-card');
+
+        // Itera sobre os produtos
+        products.forEach(function(product) {
+            // Captura o nome do produto a partir do atributo data-name
+            var productName = product.getAttribute('data-name').toLowerCase();
+
+            // Verifica se o nome do produto inclui o termo de busca
+            if (productName.includes(input)) {
+                product.classList.remove('hidden'); // Mostra o produto
+            } else {
+                product.classList.add('hidden'); // Esconde o produto
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
