@@ -46,10 +46,10 @@
             transform: scale(1.02);
         }
         .product-card img {
-             max-width: 100%; /* Limita a imagem principal ao tamanho do contêiner */
-             height: auto;
-             border-radius: 8px;
-             margin-bottom: 10px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
         .product-card h2 {
             font-size: 1.5em;
@@ -102,20 +102,18 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
-      /* Para telas menores que 768px */
+        /* Estilos para telas menores que 768px (tablets e celulares) */
         @media (max-width: 768px) {
-         .container {
-        width: 90%;
-        padding: 0 5%;
+            .container {
+                width: 90%;
+            }
+            .product-card {
+                width: 100%;
+            }
+            .search-bar input {
+                width: 100%;
+            }
         }
-         .product-card {
-        width: 100%;
-        }
-         .search-bar input {
-         width: 100%;
-        }
-}
-
     </style>
 </head>
 <body>
